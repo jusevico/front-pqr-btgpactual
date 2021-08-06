@@ -1,0 +1,11 @@
+<h1 class="text-center">Mis Solicitudes</h1>
+
+<app-info-cliente></app-info-cliente>
+
+<button mat-raised-button color="accent" class="mb" [routerLink]="'/solicitudes/new'">
+  <mat-icon>add</mat-icon>
+  Nueva Solicitud
+</button>
+
+<app-solicitudes-list [data]="data"></app-solicitudes-list>
+

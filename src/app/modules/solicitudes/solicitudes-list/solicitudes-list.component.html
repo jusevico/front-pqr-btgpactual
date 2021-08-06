@@ -1,0 +1,40 @@
+<table class="custom-table" style="text-align: center;">
+  <thead>
+  <tr>
+    <th>Radicado</th>
+    <th>Título</th>
+    <th>Descripcion</th>
+    <th>Fecha</th>
+    <th>Tipo</th>
+    <th>Acción</th>
+  </tr>
+  </thead>
+  <tbody *ngIf="data.length === 0">
+  <tr>
+    <td colspan="6">No hay registros...</td>
+  </tr>
+  </tbody>
+  <tbody>
+  <tr *ngFor="let value of data;">
+    <td><strong>{{value?.radicado}}</strong></td>
+    <td>{{value?.titulo}}</td>
+    <td>{{value?.descripcion}}</td>
+    <td>{{value?.fecha}}</td>
+    <td>{{value?.tipo?.nombre}}</td>
+    <td>
+      <ng-container *ngIf="value?.permiteReclamo">
+        <button mat-icon-button [matTooltip]="'Agregar reclamo'">
+          <mat-icon color="warn">post_add</mat-icon>
+        </button>
+      </ng-container>
+
+      <ng-container *ngIf="value?.respuestaAdministrativa">
+        <button mat-icon-button [matTooltip]="'Ver Respuestas'">
+          <mat-icon color="primary">speaker_notes</mat-icon>
+        </button>
+      </ng-container>
+
+    </td>
+  </tr>
+  </tbody>
+</table>

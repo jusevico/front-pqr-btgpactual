@@ -1,1 +1,74 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.vertical-middle {
+  vertical-align: middle;
+}
+
+.custom-table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+  max-width: 100% !important;
+}
+
+.custom-table td, .custom-table th {
+  border: 1px solid #ddd;
+  padding: 8px !important;
+  word-wrap: break-word !important;
+}
+
+.custom-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.custom-table tr:hover {
+  background-color: #ddd;
+}
+
+.custom-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #3f51b5;
+  color: white;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.height-textarea {
+  height: 150px;
+}
+
+.mat-success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.mat-cancel {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.mb {
+  margin-bottom: 10px !important;
+}
+
+.mr {
+  margin-right: 10px !important;
+}

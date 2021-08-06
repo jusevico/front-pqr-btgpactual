@@ -1,0 +1,70 @@
+<div class="container-fluid">
+
+  <h1 class="text-center">Crear Solicitud</h1>
+
+  <div class="container">
+
+
+    <form [formGroup]="solicitudForm" (submit)="submit()">
+
+      <div class="row">
+        <div class="col-md">
+          <mat-form-field class="form-field full-width" appearance="outline">
+            <mat-label>Seleccione el tipo</mat-label>
+            <mat-select formControlName="tipo">
+              <ng-container *ngFor="let tipo of tipos">
+                <mat-option *ngIf="tipo.inicial" [value]="tipo">
+                  {{tipo.nombre}}
+                </mat-option>
+              </ng-container>
+            </mat-select>
+            <mat-error *ngIf="solicitudForm.controls.tipo.touched && solicitudForm.controls.tipo.invalid">
+              <span *ngIf="solicitudForm.controls.tipo.errors.required">Este campo es requerido.</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md">
+          <mat-form-field class="form-field full-width" appearance="outline">
+            <mat-label> Título
+            </mat-label>
+            <input matInput formControlName="titulo" required>
+            <mat-error *ngIf="solicitudForm.controls.titulo.touched && solicitudForm.controls.titulo.invalid">
+              <span *ngIf="solicitudForm.controls.titulo.errors.required">Este campo es requerido.</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md">
+          <mat-form-field class="form-field full-width" appearance="outline">
+            <mat-label> Descripción
+            </mat-label>
+            <textarea matInput formControlName="descripcion" required class="height-textarea"></textarea>
+            <mat-error *ngIf="solicitudForm.controls.descripcion.touched && solicitudForm.controls.descripcion.invalid">
+              <span *ngIf="solicitudForm.controls.descripcion.errors.required">Este campo es requerido.</span>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <button mat-raised-button color="success" type="submit" class="full-width">
+            <mat-icon>check</mat-icon>
+            Guardar
+          </button>
+        </div>
+        <div class="col-md-6">
+          <button mat-raised-button color="cancel" type="button" class="full-width">
+            <mat-icon>close</mat-icon>
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

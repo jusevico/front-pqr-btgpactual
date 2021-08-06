@@ -1,6 +1,6 @@
-# FrontPqrBtgpactual
+# Frontend PQR BTGPactual
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.2.
+Frontend de la prueba técnica para BTGPactual, desarrollado en Angular 11
 
 ## Development server
 
