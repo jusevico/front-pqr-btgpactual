@@ -11,6 +11,6 @@ export class ClientesService {
   }
 
   async getByID(id): Promise<any> {
-    return await this.api.get(`${environment.apiBackend}/clientes/${id}`);
+    return await this.api.get(`${environment.apiBackend}/clientes/${id}`, false);
   }
 }

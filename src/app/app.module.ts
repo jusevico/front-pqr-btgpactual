@@ -9,6 +9,7 @@ import {ApiService} from './shared/services/api.service';
 import {SolicitudesService} from './modules/solicitudes/solicitudes.service';
 import {HttpClientModule} from '@angular/common/http';
 import {SolicitudesModule} from './modules/solicitudes/solicitudes.module';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {SolicitudesModule} from './modules/solicitudes/solicitudes.module';
     UiModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    SolicitudesModule
+    SolicitudesModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     {provide: LocationStrategy, useClass: HashLocationStrategy},

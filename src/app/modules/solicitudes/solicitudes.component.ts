@@ -2,8 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {SolicitudesService} from './solicitudes.service';
 import {DatePipe} from '@angular/common';
 import * as moment from 'moment';
-import {ClientesService} from '../clientes/clientes.service';
-import {Auth} from '../../shared/auth';
 
 @Component({
   selector: 'app-solicitudes',
@@ -14,21 +12,13 @@ import {Auth} from '../../shared/auth';
 export class SolicitudesComponent implements OnInit {
 
   clienteID = '610cd13caf068b86ce5b3d61';
-  cliente = null;
   data = [];
 
-  constructor(private solicitudService: SolicitudesService,
-              private clienteService: ClientesService) {
+  constructor(private solicitudService: SolicitudesService) {
   }
 
   async ngOnInit(): Promise<void> {
-    await this.getCliente();
     await this.getSolicitudesByClienteID();
-  }
-
-  async getCliente(): Promise<void> {
-    this.cliente = await this.clienteService.getByID(this.clienteID);
-    Auth.setCliente(this.cliente);
   }
 
   async getSolicitudesByClienteID(): Promise<void> {

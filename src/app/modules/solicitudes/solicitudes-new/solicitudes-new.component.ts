@@ -3,6 +3,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {TiposService} from '../../tipos/tipos.service';
 import {Auth} from '../../../shared/auth';
 import {SolicitudesService} from '../solicitudes.service';
+import * as moment from 'moment';
+import {ToastService} from '../../../shared/services/toast.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-solicitudes-new',
@@ -15,9 +18,11 @@ export class SolicitudesNewComponent implements OnInit {
   tipos = [];
 
   constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
     private tipoService: TiposService,
-    private solicitudService: SolicitudesService
+    private solicitudService: SolicitudesService,
+    private toast: ToastService
   ) {
   }
 
@@ -39,11 +44,13 @@ export class SolicitudesNewComponent implements OnInit {
   getParams(): any {
     const cliente = Auth.getCliente();
     const tipo = this.solicitudForm.get('tipo').value;
+    const fecha = moment(new Date()).format('YYYY-MM-DD');
     return {
       ...this.solicitudForm.value,
       tipoID: tipo._id,
       clienteID: cliente._id,
-      cliente
+      cliente,
+      fecha
     };
   }
 
@@ -55,7 +62,12 @@ export class SolicitudesNewComponent implements OnInit {
 
     const params = this.getParams();
     const result = await this.solicitudService.crear(params);
-    console.log(result);
+    if (result.status === 200) {
+      this.toast.showSuccess(result.message);
+      this.router.navigate(['/']);
+    } else {
+      this.toast.showError(result.message);
+    }
   }
 
 }
