@@ -1,0 +1,32 @@
+<h2 mat-dialog-title class="text-center">Solicitud Origen</h2>
+<mat-dialog-content class="mat-typography">
+
+  <table class="custom-table" style="text-align: center;">
+    <tr>
+      <th>Radicado</th>
+      <td>{{data?.radicado | zfill}}</td>
+    </tr>
+    <tr>
+      <th>Título</th>
+      <td>{{data?.titulo}}</td>
+    </tr>
+    <tr>
+      <th>Descripción</th>
+      <td>{{data?.descripcion}}</td>
+    </tr>
+    <tr>
+      <th>Tipo</th>
+      <td>{{data?.tipo?.nombre}}</td>
+    </tr>
+    <tr>
+      <th>Fecha</th>
+      <td>{{data?.fecha}}</td>
+    </tr>
+  </table>
+
+  <ng-container *ngIf="data.respuestaAdministrativa">
+    <h2 class="text-center m-2">Respuestas Administrativas</h2>
+    <app-table-respuestas [data]="data.respuestaAdministrativa"></app-table-respuestas>
+  </ng-container>
+
+</mat-dialog-content>

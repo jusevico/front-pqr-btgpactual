@@ -1,0 +1,89 @@
+<h1 class="text-center">Crear Reclamo para la solicitud: <strong> {{solicitudOrigen?.radicado | zfill}} </strong></h1>
+
+<table class="custom-table text-center">
+  <tr>
+    <th colspan="4">Solicitud Origen</th>
+  </tr>
+  <tr>
+    <th>Radicado</th>
+    <td>{{solicitudOrigen?.radicado | zfill}}</td>
+    <th>Tipo</th>
+    <td>{{solicitudOrigen?.tipo?.nombre}}</td>
+  </tr>
+  <tr>
+    <th>Título</th>
+    <td>{{solicitudOrigen?.titulo}}</td>
+    <th>Fecha</th>
+    <td>{{solicitudOrigen?.fecha}}</td>
+  </tr>
+  <tr>
+    <th>Descripción</th>
+    <td colspan="3">{{solicitudOrigen?.descripcion}}</td>
+  </tr>
+</table>
+
+<app-table-respuestas [data]="solicitudOrigen?.respuestaAdministrativa"></app-table-respuestas>
+
+
+<form [formGroup]="solicitudForm" (submit)="submit()" class="mt-2">
+
+  <div class="row">
+    <div class="col-md">
+      <mat-form-field class="form-field full-width" appearance="outline">
+        <mat-label>Seleccione el tipo</mat-label>
+        <mat-select formControlName="tipo">
+          <ng-container *ngFor="let tipo of tipos">
+            <mat-option *ngIf="!tipo.inicial" [value]="tipo">
+              {{tipo.nombre}}
+            </mat-option>
+          </ng-container>
+        </mat-select>
+        <mat-error *ngIf="solicitudForm.controls.tipo.touched && solicitudForm.controls.tipo.invalid">
+          <span *ngIf="solicitudForm.controls.tipo.errors.required">Este campo es requerido.</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md">
+      <mat-form-field class="form-field full-width" appearance="outline">
+        <mat-label> Título
+        </mat-label>
+        <input matInput formControlName="titulo" required>
+        <mat-error *ngIf="solicitudForm.controls.titulo.touched && solicitudForm.controls.titulo.invalid">
+          <span *ngIf="solicitudForm.controls.titulo.errors.required">Este campo es requerido.</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md">
+      <mat-form-field class="form-field full-width" appearance="outline">
+        <mat-label> Descripción
+        </mat-label>
+        <textarea matInput formControlName="descripcion" required class="height-textarea"></textarea>
+        <mat-error *ngIf="solicitudForm.controls.descripcion.touched && solicitudForm.controls.descripcion.invalid">
+          <span *ngIf="solicitudForm.controls.descripcion.errors.required">Este campo es requerido.</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <button mat-raised-button color="success" type="submit" class="full-width">
+        <mat-icon>check</mat-icon>
+        Guardar
+      </button>
+    </div>
+    <div class="col-md-6">
+      <button [routerLink]="'/'" mat-raised-button color="cancel" type="button" class="full-width">
+        <mat-icon>close</mat-icon>
+        Cancelar
+      </button>
+    </div>
+  </div>
+</form>
+

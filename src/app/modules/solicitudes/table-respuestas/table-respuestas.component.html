@@ -1,0 +1,19 @@
+<table class="custom-table" style="text-align: center;" *ngIf="data">
+  <thead>
+  <tr>
+    <th>Respuesta</th>
+    <th>Fecha</th>
+  </tr>
+  </thead>
+  <tbody *ngIf="data.length === 0">
+  <tr>
+    <td colspan="2">No hay registros...</td>
+  </tr>
+  </tbody>
+  <tbody>
+  <tr *ngFor="let value of data;">
+    <td>{{value?.descripcion}}</td>
+    <td>{{value?.fecha}}</td>
+  </tr>
+  </tbody>
+</table>

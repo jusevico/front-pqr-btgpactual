@@ -17,4 +17,9 @@ export class SolicitudesService {
   async crear(data): Promise<any> {
     return await this.api.post(`${environment.apiBackend}/solicitudes/nuevo`, JSON.stringify(data));
   }
+
+  async getByID(id): Promise<any> {
+    return await this.api.get(`${environment.apiBackend}/solicitudes/${id}`);
+  }
+
 }

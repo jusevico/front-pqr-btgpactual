@@ -12,13 +12,23 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { InfoClienteComponent } from './info-cliente/info-cliente.component';
+import {PipesModule} from '../../shared/pipes/pipes.module';
+import { ModalSolicitudOrigenComponent } from './modal-solicitud-origen/modal-solicitud-origen.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { ModalVerRespuestasComponent } from './modal-ver-respuestas/modal-ver-respuestas.component';
+import { TableRespuestasComponent } from './table-respuestas/table-respuestas.component';
+import { SolicitudesNewReclamoComponent } from './solicitudes-new-reclamo/solicitudes-new-reclamo.component';
 
 @NgModule({
   declarations: [
     SolicitudesComponent,
     SolicitudesListComponent,
     SolicitudesNewComponent,
-    InfoClienteComponent
+    InfoClienteComponent,
+    ModalSolicitudOrigenComponent,
+    ModalVerRespuestasComponent,
+    TableRespuestasComponent,
+    SolicitudesNewReclamoComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +39,9 @@ import { InfoClienteComponent } from './info-cliente/info-cliente.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    PipesModule,
+    MatDialogModule
   ]
 })
 export class SolicitudesModule { }

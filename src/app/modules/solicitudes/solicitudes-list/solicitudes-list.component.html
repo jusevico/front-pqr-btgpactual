@@ -1,4 +1,4 @@
-<table class="custom-table" style="text-align: center;">
+<table class="custom-table text-center">
   <thead>
   <tr>
     <th>Radicado</th>
@@ -16,20 +16,29 @@
   </tbody>
   <tbody>
   <tr *ngFor="let value of data;">
-    <td><strong>{{value?.radicado}}</strong></td>
+    <td><strong>{{value?.radicado | zfill}}</strong></td>
     <td>{{value?.titulo}}</td>
     <td>{{value?.descripcion}}</td>
     <td>{{value?.fecha}}</td>
     <td>{{value?.tipo?.nombre}}</td>
     <td>
       <ng-container *ngIf="value?.permiteReclamo">
-        <button mat-icon-button [matTooltip]="'Agregar reclamo'">
+        <button mat-icon-button [matTooltip]="'Agregar reclamo'"
+                [routerLink]="'/solicitudes/nuevo-reclamo/' + value?._id">
           <mat-icon color="warn">post_add</mat-icon>
         </button>
       </ng-container>
 
+      <ng-container *ngIf="value?.solicitudOrigen">
+        <button mat-icon-button [matTooltip]="'Ver Solicitud Origen'"
+                (click)="openModalSolicitudOrigen(value?.solicitudOrigen)">
+          <mat-icon color="accent">fact_check</mat-icon>
+        </button>
+      </ng-container>
+
       <ng-container *ngIf="value?.respuestaAdministrativa">
-        <button mat-icon-button [matTooltip]="'Ver Respuestas'">
+        <button mat-icon-button [matTooltip]="'Ver Respuestas'"
+                (click)="openModalVerRespuestas(value?.respuestaAdministrativa)">
           <mat-icon color="primary">speaker_notes</mat-icon>
         </button>
       </ng-container>
